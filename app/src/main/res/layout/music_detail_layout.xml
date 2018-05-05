@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/MusicImagee"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:alpha="0.5"
+        android:src="@mipmap/background2"
+        />
+    <com.example.xukefeng.musicplayer.LrcDealClass.XCRoundImageView
+        android:id="@+id/MusicImage"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerInParent="true"
+        android:scaleType="fitCenter"
+
+        />
+    <!--<ImageButton-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:src="@mipmap/circle"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--/>-->
+
+
+
+    <TextView
+        android:id="@+id/MusicName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:textColor="#332933"
+        android:layout_marginTop="5dp"
+        android:typeface="serif"
+        android:singleLine="true"
+        android:ellipsize="end"
+
+        />
+
+    <TextView
+        android:id="@+id/MusicArtist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/MusicName"
+        android:textSize="20dp"
+        android:textColor="#746274"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:typeface="normal"
+        android:singleLine="true"
+        android:ellipsize="end"
+
+        />
+    <com.example.xukefeng.musicplayer.LrcDealClass.LrcView
+        android:id="@+id/LrcViewId"
+        android:layout_width="match_parent"
+        android:layout_below="@id/MusicArtist"
+        android:layout_centerHorizontal="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:focusedByDefault="true"
+        android:layout_margin="5dp"
+        android:layout_height="match_parent" />
+
+    <com.example.xukefeng.musicplayer.LrcDealClass.AudioControl
+        android:id="@+id/AudioControlId"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="5dp"
+       />
+
+
+
+</RelativeLayout>

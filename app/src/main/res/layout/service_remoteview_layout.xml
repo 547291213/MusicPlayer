@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    >
+    <ImageView
+        android:id="@+id/remoteViewImageId"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        />
+
+    <TextView
+        android:id="@+id/remoteViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="3dp"
+        android:layout_alignParentTop="true"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:layout_toLeftOf="@id/remoteViewPreBtn"
+        android:layout_toRightOf="@id/remoteViewImageId"
+        />
+    <TextView
+        android:id="@+id/remoteViewAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:textSize="10dp"
+        android:singleLine="true"
+        android:layout_marginLeft="5dp"
+        android:ellipsize="end"
+        android:layout_toLeftOf="@id/remoteViewPreBtn"
+        android:layout_below="@id/remoteViewTitle"
+        android:layout_toRightOf="@id/remoteViewImageId"
+        />
+
+    <ImageButton
+        android:id="@+id/remoteViewNextBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@mipmap/music_next"
+        android:scaleType="center"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="5dp"
+        />
+
+    <ImageButton
+        android:id="@+id/remoteViewPlayBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@mipmap/music_play"
+        android:scaleType="center"
+        android:layout_toLeftOf="@id/remoteViewNextBtn"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="5dp"
+        />
+
+    <ImageButton
+        android:id="@+id/remoteViewPreBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@mipmap/music_pre"
+        android:scaleType="center"
+        android:layout_toLeftOf="@id/remoteViewPlayBtn"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="5dp"
+        />
+
+
+</RelativeLayout>
