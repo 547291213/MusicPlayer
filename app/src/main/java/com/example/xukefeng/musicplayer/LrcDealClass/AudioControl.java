@@ -69,6 +69,7 @@ public class AudioControl extends RelativeLayout implements View.OnClickListener
     private int durationTime = 0 ;   ///歌曲 总时间
     private int bufferTime =0 ;     //歌曲缓存。没有实现。因为是读取本地音乐所以暂不需要
     public  static boolean isPause = false ;  //歌曲状态判断
+    public static boolean SEEK_BAR_STATE = true ; //默认不是滑动状态
     /*
     构造函数
      */
@@ -365,7 +366,7 @@ public class AudioControl extends RelativeLayout implements View.OnClickListener
         /*
         对用户手动设定SeekBar进度值进行相应的跳转
          */
-        if (fromUser)
+        if (fromUser && SEEK_BAR_STATE)
         {
             int time = seekBar.getProgress() * durationTime / 100 ;
             mediaPlayer.seekTo(time);
@@ -381,10 +382,16 @@ public class AudioControl extends RelativeLayout implements View.OnClickListener
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
 
+        SEEK_BAR_STATE = false ;
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
 
+        SEEK_BAR_STATE = true ;
+        /*
+        拖动完成后实现跳转
+         */
+        onProgressChanged(seekBar , seekBar.getProgress() , true);
     }
 }

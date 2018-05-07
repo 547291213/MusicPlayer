@@ -303,13 +303,17 @@ public class MusicPlay extends Activity implements GestureDetector.OnGestureList
     /*
     让用户通过滑动屏幕来切换歌曲
      */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         /*
         将触屏事件交给手势控制处理
          */
+        //当音乐控制器获取焦点时不处理  其它情况则处理
+        if (audioControl.isFocused())
+            return true ;
+        else
         return detector.onTouchEvent(event);
-
     }
 
     /*

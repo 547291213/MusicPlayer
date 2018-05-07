@@ -37,9 +37,9 @@ public class TextAnimation extends Animation {
         //设置动画结束后保留
         setFillAfter(true);
         //设置变换速度
-        setInterpolator(new AccelerateDecelerateInterpolator());
-        //setInterpolator(new AccelerateInterpolator());
-        //setInterpolator(new LinearInterpolator());
+        setInterpolator(new AccelerateDecelerateInterpolator());  //减速
+        //setInterpolator(new AccelerateInterpolator());        //加速 默认情况
+        //setInterpolator(new LinearInterpolator());          //匀速
     }
 
     @Override
