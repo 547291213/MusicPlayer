@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.media.midi.MidiOutputPort;
 import android.os.Build;
 import android.os.Bundle;
 import android.sax.RootElement;
@@ -12,6 +13,7 @@ import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -161,6 +163,25 @@ public class AudioControl extends RelativeLayout implements View.OnClickListener
         seekBar.setMinimumHeight(100);
         seekBar.setThumbOffset(0);
         seekBar.setOnSeekBarChangeListener(this);
+        seekBar.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN)
+                {
+                    seekBar.setFocusable(true);
+                }
+                if (event.getAction() == MotionEvent.ACTION_MOVE)
+                {
+                    seekBar.requestFocus() ;
+                }
+                if (event.getAction() == MotionEvent.ACTION_UP)
+                {
+                    seekBar.setFocusable(false);
+                }
+                return false;
+            }
+        }) ;
 
     }
 
@@ -389,6 +410,7 @@ public class AudioControl extends RelativeLayout implements View.OnClickListener
     public void onStopTrackingTouch(SeekBar seekBar) {
 
         SEEK_BAR_STATE = true ;
+//        this.requestFocus() ;
         /*
         拖动完成后实现跳转
          */

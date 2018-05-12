@@ -26,6 +26,7 @@ import android.support.annotation.RequiresApi;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -97,6 +98,9 @@ public class MusicPlay extends Activity implements GestureDetector.OnGestureList
     private GestureDetector detector ;
 
     private int temp_i = 0 ;
+
+    //用来判断播放控制器是否被点击
+    private static boolean AUDIO_STATE = false ;
 
 
     @Override
@@ -204,7 +208,18 @@ public class MusicPlay extends Activity implements GestureDetector.OnGestureList
                 handle2.sendEmptyMessage(0x112) ;
             }
         }, 0 ,8000);
+        audioControl.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){//获得焦点
+                    AUDIO_STATE = true ;
+                }else{//失去焦点
 
+                    AUDIO_STATE = false ;
+                }
+            }
+        });
+        audioControl.setFocusableInTouchMode(true);
     }
 
     /*
@@ -310,9 +325,12 @@ public class MusicPlay extends Activity implements GestureDetector.OnGestureList
         将触屏事件交给手势控制处理
          */
         //当音乐控制器获取焦点时不处理  其它情况则处理
-        if (audioControl.isFocused())
+        if (event.getAction() == MotionEvent.ACTION_MOVE && AUDIO_STATE )
+        {
+            audioControl.requestFocus() ;
+
             return true ;
-        else
+        }
         return detector.onTouchEvent(event);
     }
 
@@ -365,6 +383,11 @@ public class MusicPlay extends Activity implements GestureDetector.OnGestureList
         滑动距离为 300
          */
         //向左划 下一首
+        if (null == e1 || e2 == null)
+        {
+            System.out.println("MOTIONEVENT OBJECT IS NULL");
+            return false ;
+        }
         if (e1.getX() - e2.getX() >= 300 && Math.abs(velocityX) >= 40)
         {
             /*
